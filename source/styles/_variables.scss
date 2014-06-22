@@ -1,0 +1,30 @@
+$bgColor: #444;
+$bgBody: #F4F4F4;
+$audioWidth: 360px;
+@mixin image-sprite($posX, $posY) {
+    background: url('../image/buttonIcons.jpg') $posX $posY;
+}
+@mixin round-images-corner($radius) {
+    -moz-border-radius: $radius;
+    -o-border-radius: $radius;
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin radius-elements($radius) {
+    -webkit-border-top-left-radius: $radius;
+    -webkit-border-top-right-radius: $radius;
+    -moz-border-radius-topleft: $radius;
+    -moz-border-radius-topright: $radius;
+    border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+}
+
+@mixin set-shadow($op) {
+    -webkit-box-shadow: inset 0px 0px 15px 0px rgba(83, 76, 78, 0.89);
+    -moz-box-shadow:    inset 0px 0px 15px 0px rgba(83, 76, 78, 0.89);
+    box-shadow:         inset 0px 0px 15px 0px rgba(83, 76, 78, 0.89);
+    -webkit-opacity: $op;
+    -moz-opacity: $op;
+    opacity: $op;
+}

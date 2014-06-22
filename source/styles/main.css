@@ -1,0 +1,67 @@
+body {
+  background-color: #f4f4f4; }
+
+div#playlist {
+  width: 360px;
+  min-height: 80px;
+  height: auto;
+  background-color: #eea;
+  position: absolute;
+  margin-top: -5px; }
+
+audio#player {
+  width: 360px;
+  min-height: 40px;
+  height: auto;
+  background-color: #bbf; }
+
+div.controls {
+  background-color: #444444;
+  width: 360px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: block;
+  top: -4.52px;
+  -webkit-border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+  -moz-border-radius-topleft: 6px;
+  -moz-border-radius-topright: 6px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px; }
+  div.controls div {
+    width: 32px;
+    height: 30px;
+    margin: 0 2px;
+    padding: 0 !important;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    left: 10px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px; }
+  div.controls #prevList {
+    background: url("../image/buttonIcons.jpg") -370px -489px; }
+  div.controls #backward {
+    background: url("../image/buttonIcons.jpg") -410px -489px; }
+  div.controls #forward {
+    background: url("../image/buttonIcons.jpg") -570px -489px; }
+  div.controls #nextList {
+    background: url("../image/buttonIcons.jpg") -10px -523px; }
+  div.controls #repeats {
+    background: url("../image/buttonIcons.jpg") -172px -591px; }
+  div.controls #stop {
+    background: url("../image/buttonIcons.jpg") -530px -489px; }
+  div.controls #replay {
+    background: url("../image/buttonIcons.jpg") -570px -39px; }
+  div.controls .repeated {
+    -webkit-box-shadow: inset 0px 0px 15px 0px rgba(83, 76, 78, 0.89);
+    -moz-box-shadow: inset 0px 0px 15px 0px rgba(83, 76, 78, 0.89);
+    box-shadow: inset 0px 0px 15px 0px rgba(83, 76, 78, 0.89);
+    -webkit-opacity: 0.8934;
+    -moz-opacity: 0.8934;
+    opacity: 0.8934; }

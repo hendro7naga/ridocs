@@ -1,0 +1,78 @@
+@import "variables";
+body {
+    background-color: $bgBody;
+}
+div#playlist {
+    width: $audioWidth;
+    min-height: 80px;
+    height: auto;
+    background-color: $bgColor;
+    position: absolute;
+    margin-top: -5px;
+    
+    ul#tracks {
+        margin: 0 auto;
+        padding: 0;
+        width: $audioWidth - 4px;
+        
+        li {
+            list-style: none;
+            margin: 2px;
+            padding: 1px;
+            background-color: $bgBody;
+        }
+    }
+}
+audio#player {
+    width: $audioWidth;
+    min-height: 40px;
+    height: auto;
+    background-color: #bbf;
+}
+div.controls {
+    background-color: $bgColor;
+    width: $audioWidth;
+    height: 36px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: block;
+    top: -4.52px;
+    @include radius-elements(6px);
+    div {
+        width: 32px;
+        height: 30px;
+        margin: 0 2px;
+        padding: 0 !important;
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        top: 2px;
+        left: 10px;
+        @include round-images-corner(4px);
+    }
+    #prevList {
+        @include image-sprite(-370px, -489px);
+    }
+    #backward {
+        @include image-sprite(-410px, -489px);
+    }
+    #forward {
+        @include image-sprite(-570px, -489px);
+    }
+    #nextList {
+        @include image-sprite(-10px, -523px);
+    }
+    #repeats {
+        @include image-sprite(-172px, -591px);
+    }
+    #stop {
+        @include image-sprite(-530px, -489px);
+    }
+    #replay {
+        @include image-sprite(-570px, -39px);
+    }
+    .repeated {
+        @include set-shadow(0.8934);
+    }
+}
