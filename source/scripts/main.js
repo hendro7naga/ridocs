@@ -25,6 +25,8 @@
     var tracklist = function (spec) {
         var el = document.getElementById(spec.id),
             tracks = [],
+            head = null,
+            curr = null,
             doubleclickHandler = function (trackId) {
                 return function () {
                     var player = document.getElementById(spec.playerId),
@@ -72,10 +74,20 @@
             tracks.push(newTrack);
         };
         
+        that.playNext = function () {
+            
+        };
+        
         return that;
     },
         playlist = function (spec) {
             var el = document.getElementById(spec.id),
+                player = document.getElementById(spec.playerId),
+                previous = document.getElementById(spec.prevTrack),
+                next = document.getElementById(spec.nextTrack),
+                repeat = document.getElementById(spec.repeatTrack),
+                replay = document.getElementById(spec.replayTrack),
+                stop = document.getElementById(spec.stopTrack),
                 tracks = tracklist({id: spec.trackId, playerId: spec.playerId}),
                 removeDefaultText = function () {
                     var length = el.childNodes.length,
@@ -93,6 +105,33 @@
                     removedChild.forEach(function (child) {
                         el.removeChild(child);
                     });
+                },
+                replayTrack = function (evt) {
+                    evt.stopPropagation();
+                    if (player.hasAttribute("src")) {
+                        player.currentTime = 0;
+                        player.play();
+                    }
+                },
+                repeatTrack = function (evt) {
+                    if (player.hasAttribute("src")) {
+                        if(!evt.target.hasClass("repeated")) {
+                            evt.target.addClass("repeated");
+                            player.loop = true;
+                        } else {
+                            evt.target.removeClass("repeated");
+                            player.loop = false;
+                        }  
+                    }
+                },
+                stopTrack = function (evt) {
+                    evt.stopPropagation();
+                    if (player.hasAttribute("src")) {
+                        player.currentTime = player.duration;
+                    }
+                },
+                playNext = function (evt) {
+                    
                 },
                 dropHandler = function (evt) {
                     
@@ -136,6 +175,10 @@
                 el.addEventListener("dragenter", dragEnterHandler, false);
                 el.addEventListener("dragleave", dragLeaveHandler, false);
                 el.addEventListener("drop", dropHandler, false);
+                player.addEventListener("ended", playNext, false);
+                replay.addEventListener("click", replayTrack, false);
+                stop.addEventListener("click", stopTrack, false);
+                repeat.addEventListener("click", repeatTrack, false);
             };
             
             return that;
@@ -146,6 +189,11 @@
             id          : "playlist",
             trackId     : "tracks",
             playerId    : "player",
+            prevTrack   : "prevTrack",
+            nextTrack   : "nextTrack",
+            repeatTrack : "repeatTrack",
+            replayTrack : "replayTrack",
+            stopTrack   : "stopTrack",
             filledClass : "filled",
             overClass   : "over"
         });
