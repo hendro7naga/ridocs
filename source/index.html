@@ -10,13 +10,11 @@
     <audio id="player" controls>
     </audio>
     <div class="controls">
-        <div id="prevList"></div>
-        <div id="backward"></div>
-        <div id="forward"></div>
-        <div id="nextList"></div>
-        <div id="repeats"></div>
-        <div id="replay" title="Re-play"></div>
-        <div id="stop"></div>
+        <div id="prevTrack"></div>
+        <div id="nextTrack"></div>
+        <div id="repeatTrack"></div>
+        <div id="replayTrack" title="Re-play"></div>
+        <div id="stopTrack"></div>
     </div>
     <div id="playlist" draggable="true">
         Drop your music here.
@@ -25,37 +23,5 @@
         </ul>
     </div>
     <script src="js/scripts.min.js"></script>
-    <script type="text/javascript">
-        var au = document.querySelector("#replay"),
-            rep = document.querySelector("#repeats"),
-            stop = document.querySelector("#stop");
-        var el = document.querySelector("#player");
-        function replay(evt) {
-            evt.stopPropagation();
-            evt.preventDefault();
-            el.currentTime = 0;
-        }
-        function stoped(evt) {
-            evt.stopPropagation();
-            el.currentTime = el.duration;
-        }
-        
-        function repeats(evt) {
-            evt.stopPropagation();
-            if(!evt.target.classList.contains("repeated")) {
-                evt.target.classList.add("repeated");
-                el.loop = true;
-            } else {
-                evt.target.classList.remove("repeated");
-                el.loop = false;
-            }
-        }
-        
-        rep.addEventListener('click', repeats, false);
-        au.addEventListener("click", replay, false);
-        stop.addEventListener("click", stoped, false);
-        
-        
-    </script>
 </body>
 </html>
