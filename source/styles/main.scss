@@ -7,14 +7,14 @@ div#playlist {
     min-height: 250px;
     height: auto;
     margin-top: -5px;
-    
+    color: rgba(250, 250, 250, 0.932);
     ul#tracks {
         margin: 0 auto;
         padding: 0;
         width: 99%;
         
         li {
-            width: 98%;
+            width: 99%;
             height: 31px;
             list-style: none;
             margin: 2px;
@@ -24,7 +24,11 @@ div#playlist {
             font-size: 11pt;
             line-height: 30px;
         }
+        li.nowplaying {
+            background-color: $nowPlay;
+        }
     }
+    
 }
 audio#player {
     @include skin-style();
@@ -48,29 +52,24 @@ div.controls {
         display: inline-block;
         position: relative;
         top: 2px;
-        left: 20%;
+        left: 30%;
         opacity: 0.8649;
         @include radius-elements-opacity(4px);
     }
-    #prevList {
+   
+    #prevTrack {
         @include image-sprite(179px, -103px);
     }
-    #backward {
-        @include image-sprite(149px, -103px);
-    }
-    #forward {
-        @include image-sprite(32px, -103px);
-    }
-    #nextList {
+    #nextTrack {
         @include image-sprite(-7px, -128px);
     }
-    #repeats {
+    #repeatTrack {
         @include image-sprite(-273px, -178px);
     }
-    #stop {
+    #stopTrack {
         @include image-sprite(-389px, -103px);
     }
-    #replay {
+    #replayTrack {
         @include image-sprite(-418px, -29px);
     }
     .repeated {
