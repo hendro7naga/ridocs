@@ -47,7 +47,7 @@
                             t.element.addClass("nowplaying");
                         }
                     });
-                    //audioPlayer.addEventListener("ended", playNext(audioPlayer.src), false);
+                    
                     player.setAttribute("src", currentMusic);
                     player.setAttribute("ptrNext", "track-" + nextMusic);
                     player.setAttribute("ptrPrev", "track-" + prevMusic);
@@ -56,8 +56,7 @@
                 };
             },
             clickHandler = function (trackId) { //functionality to delete selected track
-                /*alert(trackId);
-                tracks.forEach(function (el) {
+                /*tracks.forEach(function (el) {
                     if (el.id == trackId) {
                         alert("Nextnya : " + el.next + " prevNya: " + el.prev);
                     }
@@ -83,7 +82,7 @@
                 }
             }
             // add pointerNext and prev to node
-            if (head == null) {
+            if (head == null) { //check if tracks already have elements (head indicate first element in tracks)
                 newTrack.next = null;
                 newTrack.prev = null;
                 head = newTrack.id;
