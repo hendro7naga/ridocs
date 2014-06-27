@@ -55,6 +55,14 @@
                     player.play();
                 };
             },
+            clickHandler = function (trackId) { //functionality to delete selected track
+                /*alert(trackId);
+                tracks.forEach(function (el) {
+                    if (el.id == trackId) {
+                        alert("Nextnya : " + el.next + " prevNya: " + el.prev);
+                    }
+                });*/
+            },
             
             that = {};
         
@@ -91,6 +99,7 @@
             newTrack.element.setAttribute("ptrNext", "track-" + newTrack.next);
             newTrack.element.setAttribute("ptrPrev", "track-" + newTrack.prev);
             newTrack.element.addEventListener("dblclick", doubleclickHandler(newTrack.id), false);
+            //newTrack.element.addEventListener("click", clickHandler(newTrack.id), false);
             // untuk pergantian pointer ketika track baru ditambahkan saat playlist sedang berjalan
             if (onplaying) {
                 el.lastChild.setAttribute("ptrNext", "track-" + newTrack.id);
@@ -99,6 +108,7 @@
             
             tracks.push(newTrack);
         };
+        
         that.nextPlaying = function (trackId) {
             var arrId = trackId.split("-"),
                 player = document.getElementById(spec.playerId),
@@ -151,6 +161,7 @@
         };
         return that;
     },
+        //playlist functionality
         playlist = function (spec) {
             var el = document.getElementById(spec.id),
                 player = document.getElementById(spec.playerId),
@@ -197,46 +208,41 @@
                     }
                 },
                 stopTrack = function (evt) {
-                    evt.stopPropagation();
                     if (player.hasAttribute("src")) {
                         player.currentTime = player.duration;
-                        hasStop = true;
+                        hasStop = true; //handle to don't playing next song when event ended fire
                     }
                 },
-                playNext = function (evt) {
-                    evt.preventDefault();
-                    evt.stopPropagation();
+                playNext = function () {
+                    // handle to don't play next song when stopTrack fire
                     if (!hasStop) {
                         tracks.nextPlaying(evt.target.getAttribute("ptrNext"));
                     }
                 },
-                onplay = function (evt) {
-                    evt.preventDefault();
-                    evt.stopPropagation();
+                onplay = function () {
                     if (hasStop) {
                         hasStop = false;
                     }
                 },
-                prevTrack = function (evt) {
-                    evt.preventDefault();
-                    evt.stopPropagation();
+                prevTrack = function () {
                     var trackId = player.getAttribute("ptrPrev");
                     tracks.prevTracks(trackId);
                 },
-                nextTrack = function (evt) {
-                    evt.preventDefault();
-                    evt.stopPropagation();
+                nextTrack = function () {
                     var trackId = player.getAttribute("ptrNext");
                     tracks.nextPlaying(trackId);
                 },
                 dropHandler = function (evt) {
-                    
                     var files = evt.dataTransfer.files,
                         length = evt.dataTransfer.files.length,
+                        pattern = /[ogg|mka|wav]$/,
                         i;
                     
                     evt.stopPropagation();
                     evt.preventDefault();
+                    if (!pattern.test(files[0].type)) {
+                        return ;
+                    }
                     
                     removeDefaultText();
                     el.addClass(spec.filledClass);
