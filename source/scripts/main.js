@@ -188,14 +188,14 @@
                         el.removeChild(child);
                     });
                 },
-                replayTrack = function (evt) {
-                    evt.stopPropagation();
+                replayTrack = function () {
                     if (player.hasAttribute("src")) {
                         player.currentTime = 0;
                         player.play();
                     }
                 },
                 repeatTrack = function (evt) {
+                    evt.preventDefault();
                     if (player.hasAttribute("src")) {
                         if(!evt.target.hasClass("repeated")) {
                             evt.target.addClass("repeated");
@@ -206,19 +206,20 @@
                         }  
                     }
                 },
-                stopTrack = function (evt) {
+                stopTrack = function () {
                     if (player.hasAttribute("src")) {
                         player.currentTime = player.duration;
                         hasStop = true; //handle to don't playing next song when event ended fire
                     }
                 },
-                playNext = function () {
+                playNext = function (evt) {
                     // handle to don't play next song when stopTrack fire
                     if (!hasStop) {
                         tracks.nextPlaying(evt.target.getAttribute("ptrNext"));
                     }
                 },
                 onplay = function () {
+                    //handle which audioPlayer state isn't current stop
                     if (hasStop) {
                         hasStop = false;
                     }
