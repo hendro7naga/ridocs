@@ -4,7 +4,7 @@ body {
 }
 div#playlist {
     @include skin-style();
-    min-height: 250px;
+    min-height: 300px;
     height: auto;
     margin-top: -5px;
     color: rgba(250, 250, 250, 0.932);
@@ -12,7 +12,7 @@ div#playlist {
         margin: 0 auto;
         padding: 0;
         width: 99%;
-        
+        overflow-x: hidden;
         li {
             width: 99%;
             height: 31px;
@@ -26,9 +26,15 @@ div#playlist {
         }
         li.nowplaying {
             background-color: $nowPlay;
+            text-indent: 5px;
+            font-style: italic;
         }
     }
     
+}
+.overClass {
+    border: $overClass;
+    background-color: $bgBody;
 }
 audio#player {
     @include skin-style();

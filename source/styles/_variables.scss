@@ -1,8 +1,9 @@
 $bgColor: #0F1012;
 $bgBody: #F4F4F4;
-$nowPlay: rgba(38, 189, 110, 0.93);
+$nowPlay: rgba(214, 39, 46, 0.92);
 $bgList: rgba(18, 100, 126, 0.94);
 $colorAgakPutih: rgba(248, 243, 243, 0.96);
+$overClass: 2px dashed #F4F4F4;
 $audioWidth: 360px;
 @mixin image-sprite($posX, $posY) {
     background: url('../image/buttonIcons.jpg') $posX $posY;
